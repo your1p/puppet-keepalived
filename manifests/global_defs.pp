@@ -1,54 +1,69 @@
-# == Class keepalived::global_defs
+# @summary
+#   Class keepalived::global_defs
 #
-# === Parameters:
+# @param notification_email
+#   Array of notification email Recipients.
+#   Default: undef.
 #
-# $notification_email::            Array of notification email Recipients.
-#                                  Default: undef.
+# @param notification_email_from
+#   Define the notification email Sender.
+#   Default: undef.
 #
-# $notification_email_from::       Define the notification email Sender.
-#                                  Default: undef.
+# @param smtp_server
+#   Define the smtp server addres.
+#   Default: undef.
 #
-# $smtp_server::                   Define the smtp server addres.
-#                                  Default: undef.
+# @param smtp_connect_timeout
+#   Define the smtp connect timeout.
+#   Default: undef.
 #
-# $smtp_connect_timeout::          Define the smtp connect timeout.
-#                                  Default: undef.
+# @param router_id
+#   Define the router ID.
+#   Default: undef.
 #
-# $router_id::                     Define the router ID.
-#                                  Default: undef.
+# @param script_user
+#   Set the global script_user option.
+#   Default: undef.
 #
-# $script_user                     Set the global script_user option.
-#                                  Default: undef.
+# @param enable_script_security
+#   Set the enable_script_security option.
+#   Default: undef.
 #
-# $enable_script_security::        Set the enable_script_security option.
-#                                  Default: undef.
+# @param snmp_socket
+#   Define snmp master agent socker
+#   Default: unix:/var/agentx/master
 #
-# $snmp_socket::                   Define snmp master agent socker
-#                                  Default: unix:/var/agentx/master
+# @param enable_snmp_keepalived
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_snmp_keepalived::        Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_checker
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_snmp_checker::           Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_rfc
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_snmp_rfc::               Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv2
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_snmp_rfcv2::             Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_snmp_rfcv3
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_snmp_rfcv3::             Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param enable_traps
+#   Set enable_snmp_keepalived option.
+#   Default: undef.
 #
-# $enable_traps::                  Set enable_snmp_keepalived option.
-#                                  Default: undef.
+# @param vrrp_higher_prio_send_advert
+#   Set vrrp_higher_prio_send_advert option.
+#   Default: undef.
 #
-# $vrrp_higher_prio_send_advert::  Set vrrp_higher_prio_send_advert option.
-#                                  Default: undef.
-#
-# $vrrp_garp_lower_prio_repeat::  Set vrrp_garp_lower_prio_repeat option.
-#                                  Default: undef.
+# @param vrrp_garp_lower_prio_repeat
+#   Set vrrp_garp_lower_prio_repeat option.
+#   Default: undef.
 #
 class keepalived::global_defs(
   $notification_email                             = undef,

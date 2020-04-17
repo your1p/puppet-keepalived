@@ -1,32 +1,39 @@
-# == Define: keepalived::vrrp::script
+# @summary keepalived::vrrp::script
 #
-# === Parameters:
+# @param ensure
+#   Default: present
 #
-# $ensure::   Default: present
+# @param interval
+#   Set the interval to run the vrrp script.
+#   Default: '2'
 #
-# $interval:: Set the interval to run the vrrp script.
-#             Default: '2'
+# @param script
+#   Which command or script to execute.
+#   Default: undef
 #
-# $script::   Which command or script to execute.
-#             Default: undef
+# @param weight
+#   The weight the script should add to the instance.
+#   Default: '2'
 #
-# $weight::   The weight the script should add to the instance.
-#             Default: '2'
+# @param fall
+#   required number of failures for KO switch.
+#   Default: undef
 #
-# $fall::     required number of failures for KO switch.
-#             Default: undef
+# @param rise
+#   required number of successes for OK switch.
+#   Default: undef
 #
-# $rise::     required number of successes for OK switch.
-#             Default: undef
+# @param timeout
+#   max time to wait for the vrrp script to return.
+#   Default: undef
 #
-# $timeout::  max time to wait for the vrrp script to return.
-#             Default: undef
+# @param user
+#   user to run the vrrp script under.
+#   Default: undef
 #
-# $user::     user to run the vrrp script under.
-#             Default: undef
-#
-# $group::    group to run the vrrp script under - only used if $user is also set.
-#             Default: undef
+# @param group
+#   group to run the vrrp script under - only used if $user is also set.
+#   Default: undef
 #
 define keepalived::vrrp::script (
   String[1] $script,
