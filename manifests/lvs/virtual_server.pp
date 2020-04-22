@@ -47,11 +47,11 @@
 #   Boolean.
 #   Default: false => not set in config.
 #
-# @param sh-port
+# @param sh_port
 #   Boolean.
 #   Default: false => not set in config.
 #
-# @param sh-fallback
+# @param sh_fallback
 #   Boolean.
 #   Default: false => not set in config.
 #
@@ -103,6 +103,14 @@
 # @param sorry_server_inhibit
 #   Boolean.
 #   Default: false => not set in config.
+#
+# @param persistence_timeout
+#   Integer.
+#   Default: unset.
+#
+# @param virtualhost
+#   FQDN.
+#   Default: unset.
 #
 # @param real_servers
 #   The real servers to balance to.

@@ -1,6 +1,6 @@
 # @summary keepalived::vrrp::instance
 #
-# @param $interface
+# @param interface
 #   Define which interface to listen on.
 #
 # @param priority
@@ -31,9 +31,9 @@
 #   May be specified as a hash (or array of hashes)
 #     containing extra properties
 #       e.g. `{ 'src' => '10.0.0.1',
-#       'to' => '192.168.30.0/24',
-#       'via' => '10.0.0.254',
-#       'metric' => '15' }`
+#               'to' => '192.168.30.0/24',
+#               'via' => '10.0.0.254',
+#               'metric' => '15' }`
 #   Supported properties: src, to, via, dev, scope, table, metric
 #
 # @param virtual_rules
@@ -193,7 +193,6 @@
 # @param native_ipv6
 #   Force instance to use IPv6 (when mixed IPv4 and IPv6 config)
 #
-
 define keepalived::vrrp::instance (
   $interface,
   Integer[1,254] $priority,
