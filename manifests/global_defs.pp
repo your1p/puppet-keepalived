@@ -1,5 +1,5 @@
 # @summary
-#   Class keepalived::global_defs
+#   Manage keepalived notifictions
 #
 # @param notification_email
 #   Array of notification email Recipients.

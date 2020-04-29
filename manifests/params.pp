@@ -1,4 +1,5 @@
-# == Class keepalived::params
+# @summary
+#   Configure parameters for oses
 #
 class keepalived::params {
 

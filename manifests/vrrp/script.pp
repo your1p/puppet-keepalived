@@ -1,4 +1,5 @@
-# @summary keepalived::vrrp::script
+# @summary
+#   Configure VRRP script
 #
 # @param interval
 #   Set the interval to run the vrrp script.

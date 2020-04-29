@@ -1,4 +1,5 @@
-# @summary keepalived::vrrp::track_process
+# @summary
+#   Configure the process tracker
 #
 # @param proc_name
 #   process name to track

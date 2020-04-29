@@ -1,6 +1,4 @@
-# Define Keepalived::Lvs::Real_server
-#
-# @summary keepalived::lvs::real_server
+# @summary
 #   Add a real server to a Linux Virtual Server with keepalived
 #
 # @param virtual_server

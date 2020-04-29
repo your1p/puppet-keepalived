@@ -5,22 +5,25 @@
 
 **Classes**
 
-* [`keepalived`](#keepalived): == Class keepalived
-* [`keepalived::config`](#keepalivedconfig): == Class keepalived::config
-* [`keepalived::global_defs`](#keepalivedglobal_defs): Class keepalived::global_defs
-* [`keepalived::install`](#keepalivedinstall): == Class keepalived::install
-* [`keepalived::params`](#keepalivedparams): == Class keepalived::params
-* [`keepalived::service`](#keepalivedservice): == Class keepalived
+* [`keepalived`](#keepalived): Install and configure keepalived
+* [`keepalived::config`](#keepalivedconfig): Configure keepalived module
+* [`keepalived::global_defs`](#keepalivedglobal_defs): Manage keepalived notifictions
+* [`keepalived::install`](#keepalivedinstall): Install keepalived package
+* [`keepalived::params`](#keepalivedparams): Configure parameters for oses
+* [`keepalived::service`](#keepalivedservice): Manage keepalived service
 
 **Defined types**
 
-* [`keepalived::lvs::real_server`](#keepalivedlvsreal_server): keepalived::lvs::real_server
-Add a real server to a Linux Virtual Server with keepalived
-* [`keepalived::lvs::virtual_server`](#keepalivedlvsvirtual_server): == Define: keepalived::lvs::virtual_server  Configure a Linux Virtual Server with keepalived  Work in progress, supports:   - single IP/port 
-* [`keepalived::vrrp::instance`](#keepalivedvrrpinstance): keepalived::vrrp::instance
-* [`keepalived::vrrp::script`](#keepalivedvrrpscript): keepalived::vrrp::script
-* [`keepalived::vrrp::sync_group`](#keepalivedvrrpsync_group): keepalived::vrrp::sync_group
-* [`keepalived::vrrp::track_process`](#keepalivedvrrptrack_process): keepalived::vrrp::track_process
+* [`keepalived::lvs::real_server`](#keepalivedlvsreal_server): Add a real server to a Linux Virtual Server with keepalived
+* [`keepalived::lvs::virtual_server`](#keepalivedlvsvirtual_server): Configure a Linux Virtual Server with keepalived
+
+Work in progress, supports:
+  - single IP/port virtual servers
+  - TCP_CHECK healthchecks
+* [`keepalived::vrrp::instance`](#keepalivedvrrpinstance): Configure VRRP instance
+* [`keepalived::vrrp::script`](#keepalivedvrrpscript): Configure VRRP script
+* [`keepalived::vrrp::sync_group`](#keepalivedvrrpsync_group): Configure the group for instance
+* [`keepalived::vrrp::track_process`](#keepalivedvrrptrack_process): Configure the process tracker
 
 **Data types**
 
@@ -31,7 +34,7 @@ Add a real server to a Linux Virtual Server with keepalived
 
 ### keepalived
 
-== Class keepalived
+Install and configure keepalived
 
 #### Parameters
 
@@ -231,11 +234,11 @@ Default value: {}
 
 ### keepalived::config
 
-== Class keepalived::config
+Configure keepalived module
 
 ### keepalived::global_defs
 
-Class keepalived::global_defs
+Manage keepalived notifictions
 
 #### Parameters
 
@@ -371,21 +374,21 @@ Default value: `undef`
 
 ### keepalived::install
 
-== Class keepalived::install
+Install keepalived package
 
 ### keepalived::params
 
-== Class keepalived::params
+Configure parameters for oses
 
 ### keepalived::service
 
-== Class keepalived
+Manage keepalived service
 
 ## Defined types
 
 ### keepalived::lvs::real_server
 
-Define Keepalived::Lvs::Real_server
+Add a real server to a Linux Virtual Server with keepalived
 
 #### Parameters
 
@@ -430,18 +433,11 @@ Default value: {}
 
 ### keepalived::lvs::virtual_server
 
-== Define: keepalived::lvs::virtual_server
-
 Configure a Linux Virtual Server with keepalived
 
 Work in progress, supports:
   - single IP/port virtual servers
   - TCP_CHECK healthchecks
-
-=== Parameters
-
-Refer to keepalived's documentation to understand the behaviour
-of these parameters
 
 #### Examples
 
@@ -457,8 +453,6 @@ real_server_options => {
     }
   }
 }
-
-Default: unset => no default options
 ```
 
 #### Parameters
@@ -486,7 +480,6 @@ Default value: `undef`
 Data type: `Optional[Integer[1]]`
 
 Virtual Server firewall mark. (overrides ip_address and port)
-Default: not set
 
 Default value: `undef`
 
@@ -495,13 +488,12 @@ Default value: `undef`
 Data type: `Enum['rr','wrr','lc','wlc','lblc','sh','dh']`
 
 Must be one of rr, wrr, lc, wlc, lblc, sh, dh
-Default: not set.
 
 ##### `delay_loop`
 
 Data type: `Optional[Integer[1]]`
 
-Default: not set.
+Integer
 
 Default value: `undef`
 
@@ -509,7 +501,7 @@ Default value: `undef`
 
 Data type: `Enum['TCP','UDP']`
 
-Default: TCP
+Enum.
 
 Default value: 'TCP'
 
@@ -518,7 +510,6 @@ Default value: 'TCP'
 Data type: `Enum['NAT','DR','TUN']`
 
 Must be one of NAT, TUN, DR.
-Default: NAT
 
 Default value: 'NAT'
 
@@ -527,7 +518,6 @@ Default value: 'NAT'
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -536,7 +526,6 @@ Default value: `false`
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -545,7 +534,6 @@ Default value: `false`
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -554,7 +542,6 @@ Default value: `false`
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -563,7 +550,6 @@ Default value: `false`
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -572,7 +558,6 @@ Default value: `false`
 Data type: `Optional[Integer[1]]`
 
 Integer.
-Defaults to unset => does not appear in config.
 
 Default value: `undef`
 
@@ -581,7 +566,6 @@ Default value: `undef`
 Data type: `Optional[String[1]]`
 
 Script string.
-Defaults to unset => does not appear in config.
 
 Default value: `undef`
 
@@ -590,7 +574,6 @@ Default value: `undef`
 Data type: `Optional[String[1]]`
 
 Script string.
-Defaults to unset => does not appear in config.
 
 Default value: `undef`
 
@@ -599,7 +582,6 @@ Default value: `undef`
 Data type: `Optional[Integer[0]]`
 
 Integer.
-Defaults to unset => does not appear in config.
 
 Default value: `undef`
 
@@ -610,7 +592,6 @@ Data type: `Optional[Hash]`
 The TCP_CHECK to configure for real_servers.
 Should be a hash containing these keys:
   [*connect_timeout*]
-Default: unset => no TCP_CHECK configured.
 
 Default value: `undef`
 
@@ -639,7 +620,6 @@ Default value: `undef`
 Data type: `Boolean`
 
 Boolean.
-Default: false => not set in config.
 
 Default value: `false`
 
@@ -648,7 +628,6 @@ Default value: `false`
 Data type: `Optional[Integer[1]]`
 
 Integer.
-Default: unset.
 
 Default value: `undef`
 
@@ -657,7 +636,6 @@ Default value: `undef`
 Data type: `Optional[Stdlib::Fqdn]`
 
 FQDN.
-Default: unset.
 
 Default value: `undef`
 
@@ -680,13 +658,62 @@ Data type: `Boolean`
 Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 with a virtual_server equal to the name/title of this resource. This allows
 you to easily export a real_server resource on each node in the pool.
-Defaults to true => collect exported real_servers
 
 Default value: `true`
 
 ### keepalived::vrrp::instance
 
-keepalived::vrrp::instance
+Configure VRRP instance
+
+#### Examples
+
+##### 
+
+```puppet
+May be specified as either:
+a) ip address (or array of IP addresses)
+   e.g. `'10.0.0.1'`
+b) a hash (or array of hashes) containing
+   extra properties
+   e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
+   Supported properties: dev, brd, label, scope.
+```
+
+##### 
+
+```puppet
+May be specified as a hash (or array of hashes)
+  containing extra properties
+    e.g. `{ 'src' => '10.0.0.1',
+            'to' => '192.168.30.0/24',
+            'via' => '10.0.0.254',
+            'metric' => '15' }`
+Supported properties: src, to, via, dev, scope, table, metric
+```
+
+##### 
+
+```puppet
+May be specified as a hash (or array of hashes)
+   containing extra properties
+   e.g. `{ 'from' => '10.0.0.1',
+           'via' => '10.0.0.254',
+           'lookup' => 'customroute',
+           'metric' => '15' }`
+   Supported properties: from, to, dev, lookup, metric
+```
+
+##### 
+
+```puppet
+May be specified as either:
+a) ip address (or array of IP addresses)
+   e.g. `'10.0.0.1'`
+b) a hash (or array of hashes) containing
+   extra properties
+e.g. `{ 'ip'=>'10.0.0.1', 'scope'=>'local' }`
+Supported properties: dev, brd, label, scope.
+```
 
 #### Parameters
 
@@ -709,14 +736,12 @@ Set instance priority.
 Data type: `Any`
 
 Set instance state.
-Valid options: MASTER, BACKUP.
 
 ##### `virtual_ipaddress_int`
 
 Data type: `Any`
 
 Set interface for VIP to be assigned to,
-defaults to $interface
 
 Default value: `undef`
 
@@ -726,14 +751,6 @@ Data type: `Any`
 
 Set floating IP address.
 
-May be specified as either:
-a) ip address (or array of IP addresses)
-   e.g. `'10.0.0.1'`
-b) a hash (or array of hashes) containing
-   extra properties
-   e.g. `{ 'ip' => '10.0.0.1', 'label' => 'webvip' }`
-   Supported properties: dev, brd, label, scope.
-
 Default value: `undef`
 
 ##### `virtual_routes`
@@ -742,14 +759,6 @@ Data type: `Any`
 
 Set floating routes.
 
-May be specified as a hash (or array of hashes)
-  containing extra properties
-    e.g. `{ 'src' => '10.0.0.1',
-            'to' => '192.168.30.0/24',
-            'via' => '10.0.0.254',
-            'metric' => '15' }`
-Supported properties: src, to, via, dev, scope, table, metric
-
 Default value: `undef`
 
 ##### `virtual_rules`
@@ -757,14 +766,6 @@ Default value: `undef`
 Data type: `Optional[Array[Keepalived::Vrrp::Instance::VRule]]`
 
 Set floating rules.
-
-May be specified as a hash (or array of hashes)
-   containing extra properties
-   e.g. `{ 'from' => '10.0.0.1',
-           'via' => '10.0.0.254',
-           'lookup' => 'customroute',
-           'metric' => '15' }`
-   Supported properties: from, to, dev, lookup, metric
 
 Default value: `undef`
 
@@ -776,15 +777,6 @@ For cases with large numbers (eg 200) of IPs
 on the same interface. To decrease the number
 of packets sent in adverts, you can exclude
 most IPs from adverts.
-Default: undef.
-
-May be specified as either:
-a) ip address (or array of IP addresses)
-   e.g. `'10.0.0.1'`
-b) a hash (or array of hashes) containing
-   extra properties
-e.g. `{ 'ip'=>'10.0.0.1', 'scope'=>'local' }`
-Supported properties: dev, brd, label, scope.
 
 Default value: `undef`
 
@@ -799,7 +791,6 @@ Set virtual router id.
 Data type: `Any`
 
 Set authentication method.
-Default: undef.
 
 Default value: `undef`
 
@@ -808,7 +799,6 @@ Default value: `undef`
 Data type: `Any`
 
 Authentication password.
-Default: undef.
 
 Default value: `undef`
 
@@ -817,7 +807,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define which script to run to track service states.
-Default: undef.
 
 Default value: `undef`
 
@@ -826,7 +815,6 @@ Default value: `undef`
 Data type: `Optional[Array[String[1]]]`
 
 Define which process trackers to run.
-Default: undef.
 
 Default value: `undef`
 
@@ -840,7 +828,6 @@ these interfaces goes down.
 May be specified as either:
   a) interface name
   b) array of interfaces names
-Default: undef.
 
 Default value: `undef`
 
@@ -849,7 +836,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define lvs_sync_daemon_interface.
-Default: undef.
 
 Default value: `undef`
 
@@ -859,7 +845,6 @@ Data type: `Any`
 
 Send status alerts via SMTP. Requires user provided
 in SMTP settings in keepalived::global_defs class.
-Default: false.
 
 Default value: `false`
 
@@ -891,7 +876,6 @@ Default value: `undef`
 Data type: `Any`
 
 The interval between VRRP packets
-Default: 1 second.
 
 Default value: 1
 
@@ -901,7 +885,6 @@ Data type: `Any`
 
 The delay for gratuitous ARP after transition
 to MASTER
-Default: 5 seconds.
 
 Default value: 5
 
@@ -911,7 +894,6 @@ Data type: `Any`
 
 Repeat gratuitous ARP after transition to MASTER
 this often.
-Default: undef.
 
 Default value: `undef`
 
@@ -920,7 +902,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define the notify master script.
-Default: undef.
 
 Default value: `undef`
 
@@ -929,7 +910,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define the notify backup script.
-Default: undef.
 
 Default value: `undef`
 
@@ -938,7 +918,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define the notify fault script.
-Default: undef.
 
 Default value: `undef`
 
@@ -947,7 +926,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define the notify stop script.
-Default: undef.
 
 Default value: `undef`
 
@@ -956,7 +934,6 @@ Default value: `undef`
 Data type: `Any`
 
 Define the notify script.
-Default: undef.
 
 Default value: `undef`
 
@@ -967,7 +944,6 @@ Data type: `Any`
 default IP for binding vrrpd is the primary IP
 on interface. If you want to hide the location of vrrpd,
 use this IP as src_addr for multicast vrrp packets.
-Default: undef.
 
 Default value: `undef`
 
@@ -978,7 +954,6 @@ Data type: `Optional[Stdlib::Absolutepath]`
 Define the notify_master_rx_lower_pri script.
 This is executed if a master receives an advert with
 priority lower than the master's advert.
-Default: undef.
 
 Default value: `undef`
 
@@ -989,7 +964,6 @@ Data type: `Any`
 default IP for binding vrrpd is the primary IP
 on interface. If you want to hide the location of vrrpd,
 use this IP as src_addr for unicast vrrp packets.
-Default: undef.
 
 Default value: `undef`
 
@@ -1002,7 +976,6 @@ Instead send adverts to the list of ip addresses using
 a unicast design fashion.
 
 May be specified as an array with ip addresses
-Default: undef.
 
 Default value: `undef`
 
@@ -1065,7 +1038,7 @@ Default value: `undef`
 
 ### keepalived::vrrp::script
 
-keepalived::vrrp::script
+Configure VRRP script
 
 #### Parameters
 
@@ -1143,7 +1116,7 @@ Default value: `false`
 
 ### keepalived::vrrp::sync_group
 
-keepalived::vrrp::sync_group
+Configure the group for instance
 
 #### Parameters
 
@@ -1223,7 +1196,7 @@ Default value: `false`
 
 ### keepalived::vrrp::track_process
 
-keepalived::vrrp::track_process
+Configure the process tracker
 
 #### Parameters
 

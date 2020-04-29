@@ -1,15 +1,9 @@
-# == Define: keepalived::lvs::virtual_server
+# @summary
+#   Configure a Linux Virtual Server with keepalived
 #
-# Configure a Linux Virtual Server with keepalived
-#
-# Work in progress, supports:
-#   - single IP/port virtual servers
-#   - TCP_CHECK healthchecks
-#
-# === Parameters
-#
-# Refer to keepalived's documentation to understand the behaviour
-# of these parameters
+#   Work in progress, supports:
+#     - single IP/port virtual servers
+#     - TCP_CHECK healthchecks
 #
 # @param ip_address
 #   Virtual server IP address.
@@ -19,63 +13,50 @@
 #
 # @param fwmark
 #   Virtual Server firewall mark. (overrides ip_address and port)
-#   Default: not set
 #
 # @param lb_algo
 #   Must be one of rr, wrr, lc, wlc, lblc, sh, dh
-#   Default: not set.
 #
 # @param delay_loop
-#   Default: not set.
+#   Integer
 #
 # @param protocol
-#   Default: TCP
+#   Enum.
 #
 # @param lb_kind
 #   Must be one of NAT, TUN, DR.
-#   Default: NAT
 #
 # @param ha_suspend
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param alpha
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param omega
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param sh_port
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param sh_fallback
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param quorum
 #   Integer.
-#   Defaults to unset => does not appear in config.
 #
 # @param quorum_up
 #   Script string.
-#   Defaults to unset => does not appear in config.
 #
 # @param quorum_down
 #   Script string.
-#   Defaults to unset => does not appear in config.
 #
 # @param hysteresis
 #   Integer.
-#   Defaults to unset => does not appear in config.
 #
 # @param tcp_check
 #   The TCP_CHECK to configure for real_servers.
 #   Should be a hash containing these keys:
 #     [*connect_timeout*]
-#   Default: unset => no TCP_CHECK configured.
 #
 # @param real_server_options
 #   One or more options to apply to all real_server blocks inside this
@@ -92,8 +73,6 @@
 #     }
 #   }
 #
-#   Default: unset => no default options
-#
 # @param sorry_server
 #   The sorry_server to define
 #   A hash with these keys:
@@ -102,15 +81,12 @@
 #
 # @param sorry_server_inhibit
 #   Boolean.
-#   Default: false => not set in config.
 #
 # @param persistence_timeout
 #   Integer.
-#   Default: unset.
 #
 # @param virtualhost
 #   FQDN.
-#   Default: unset.
 #
 # @param real_servers
 #   The real servers to balance to.
@@ -123,7 +99,6 @@
 #   Boolean. Automatically collect exported @@keepalived::lvs::real_servers
 #   with a virtual_server equal to the name/title of this resource. This allows
 #   you to easily export a real_server resource on each node in the pool.
-#   Defaults to true => collect exported real_servers
 #
 define keepalived::lvs::virtual_server (
   Enum['rr','wrr','lc','wlc','lblc','sh','dh'] $lb_algo,

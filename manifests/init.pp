@@ -1,4 +1,5 @@
-# == Class keepalived
+# @summary
+#   Install and configure keepalived
 #
 # @param sysconf_dir
 #

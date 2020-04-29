@@ -1,4 +1,5 @@
-# @summary keepalived::vrrp::instance
+# @summary
+#   Configure VRRP instance
 #
 # @param interface
 #   Define which interface to listen on.
@@ -8,15 +9,14 @@
 #
 # @param state
 #   Set instance state.
-#   Valid options: MASTER, BACKUP.
 #
 # @param virtual_ipaddress_int
 #   Set interface for VIP to be assigned to,
-#   defaults to $interface
 #
 # @param virtual_ipaddress
 #   Set floating IP address.
 #
+# @example
 #   May be specified as either:
 #   a) ip address (or array of IP addresses)
 #      e.g. `'10.0.0.1'`
@@ -28,6 +28,7 @@
 # @param virtual_routes
 #   Set floating routes.
 #
+# @example
 #   May be specified as a hash (or array of hashes)
 #     containing extra properties
 #       e.g. `{ 'src' => '10.0.0.1',
@@ -39,6 +40,7 @@
 # @param virtual_rules
 #   Set floating rules.
 #
+# @example
 #   May be specified as a hash (or array of hashes)
 #      containing extra properties
 #      e.g. `{ 'from' => '10.0.0.1',
@@ -52,8 +54,8 @@
 #   on the same interface. To decrease the number
 #   of packets sent in adverts, you can exclude
 #   most IPs from adverts.
-#   Default: undef.
 #
+# @example
 #   May be specified as either:
 #   a) ip address (or array of IP addresses)
 #      e.g. `'10.0.0.1'`
@@ -67,19 +69,15 @@
 #
 # @param auth_type
 #   Set authentication method.
-#   Default: undef.
 #
 # @param auth_pass
 #   Authentication password.
-#   Default: undef.
 #
 # @param track_script
 #   Define which script to run to track service states.
-#   Default: undef.
 #
 # @param track_process
 #   Define which process trackers to run.
-#   Default: undef.
 #
 # @param track_interface
 #   Define which interface(s) to monitor.
@@ -88,16 +86,13 @@
 #   May be specified as either:
 #     a) interface name
 #     b) array of interfaces names
-#   Default: undef.
 #
 # @param lvs_interface
 #   Define lvs_sync_daemon_interface.
-#   Default: undef.
 #
 # @param smtp_alert
 #   Send status alerts via SMTP. Requires user provided
 #   in SMTP settings in keepalived::global_defs class.
-#   Default: false.
 #
 # @param nopreempt
 #   Allows the lower priority machine to maintain
@@ -114,55 +109,44 @@
 #
 # @param advert_int
 #   The interval between VRRP packets
-#   Default: 1 second.
 #
 # @param garp_master_delay
 #   The delay for gratuitous ARP after transition
 #   to MASTER
-#   Default: 5 seconds.
 #
 # @param garp_master_refresh
 #   Repeat gratuitous ARP after transition to MASTER
 #   this often.
-#   Default: undef.
 #
 # @param notify_script_master
 #   Define the notify master script.
-#   Default: undef.
 #
 # @param notify_script_backup
 #   Define the notify backup script.
-#   Default: undef.
 #
 # @param notify_script_fault
 #   Define the notify fault script.
-#   Default: undef.
 #
 # @param notify_script_stop
 #   Define the notify stop script.
-#   Default: undef.
 #
 # @param notify_script
 #   Define the notify script.
-#   Default: undef.
 #
 # @param multicast_source_ip
 #   default IP for binding vrrpd is the primary IP
 #   on interface. If you want to hide the location of vrrpd,
 #   use this IP as src_addr for multicast vrrp packets.
-#   Default: undef.
 #
 # @param notify_script_master_rx_lower_pri
 #   Define the notify_master_rx_lower_pri script.
 #   This is executed if a master receives an advert with
 #   priority lower than the master's advert.
-#   Default: undef.
 #
 # @param unicast_source_ip
 #   default IP for binding vrrpd is the primary IP
 #   on interface. If you want to hide the location of vrrpd,
 #   use this IP as src_addr for unicast vrrp packets.
-#   Default: undef.
 #
 # @param unicast_peers
 #   Do not send VRRP adverts over VRRP multicast group.
@@ -170,7 +154,6 @@
 #   a unicast design fashion.
 #
 #   May be specified as an array with ip addresses
-#   Default: undef.
 #
 # @param dont_track_primary
 #   Tells keepalived to ignore VRRP interface faults.

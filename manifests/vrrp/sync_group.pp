@@ -1,4 +1,5 @@
-# @summary keepalived::vrrp::sync_group
+# @summary
+#   Configure the group for instance
 #
 # @param group
 #   Define vrrp instances to group (Array)
